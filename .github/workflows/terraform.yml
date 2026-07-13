@@ -75,5 +75,4 @@ jobs:
       - run: terraform init --backend-config=envs/production.backend.hcl
       - run: terraform plan --var-file=envs/production.tfvars -out=tfplan
       - run: terraform apply --auto-approve tfplan
-      - run: terraform apply --auto-approve tfplan
     #test
