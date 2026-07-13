@@ -76,3 +76,4 @@ jobs:
       - run: terraform plan --var-file=envs/production.tfvars -out=tfplan
       - run: terraform apply --auto-approve tfplan
       - run: terraform apply --auto-approve tfplan
+      #finally, destroy the resources after the deployment
