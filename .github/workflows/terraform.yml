@@ -30,9 +30,9 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - uses: hashicorp/setup-terraform@v3
-      - run: terraform init -backend-config=envs/staging.backend.hcl
+      - run: terraform init --backend-config=envs/staging.backend.hcl
       - run: terraform validate
-      - run: terraform plan -var-file=envs/staging.tfvars -out=tfplan
+      - run: terraform plan --var-file=envs/staging.tfvars -out=tfplan
       - uses: actions/upload-artifact@v4
         with:
           name: tfplan-staging
@@ -55,8 +55,8 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: tfplan-staging
-      - run: terraform init -backend-config=envs/staging.backend.hcl
-      - run: terraform apply -auto-approve tfplan
+      - run: terraform init --backend-config=envs/staging.backend.hcl
+      - run: terraform apply --auto-approve tfplan
 
   deploy_production:
     name: Deploy (production)
@@ -72,7 +72,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - uses: hashicorp/setup-terraform@v3
-      - run: terraform init -backend-config=envs/production.backend.hcl
-      - run: terraform plan -var-file=envs/production.tfvars -out=tfplan
-      - run: terraform apply -auto-approve tfplan
-      - run: terraform apply -auto-approve tfplan
+      - run: terraform init --backend-config=envs/production.backend.hcl
+      - run: terraform plan --var-file=envs/production.tfvars -out=tfplan
+      - run: terraform apply --auto-approve tfplan
+      - run: terraform apply --auto-approve tfplan
