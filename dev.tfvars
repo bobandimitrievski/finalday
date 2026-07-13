@@ -1,0 +1,2 @@
+location    = "uksouth"
+environment = "dev"

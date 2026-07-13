@@ -1,0 +1,14 @@
+# Local .gitignore file for Terraform projects
+.terraform/
+*.tfstate
+*.tfstate.backup
+tfplan
+
+# crash logs
+crash.log
+
+# secrets variables files
+*.auto.tfvars
+secrets.tfvars
+
+# DO commit: .terraform.lock.hcl and environment-specific override files (e.g., dev.tfvars, prod.tfvars) if you want to share them with your team.
